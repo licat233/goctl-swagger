@@ -1,3 +1,5 @@
+// 不必要的注释
+
 type (
     RegisterReq {
         Username string `json:"username"`

@@ -1,9 +1,11 @@
 # goctl-swagger
 
+## licat 修改版
+
 ### 1. 编译goctl-swagger插件
 
-```
-GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/goctl-swagger@latest
+```shell
+GOPROXY=https://goproxy.cn/,direct go install github.com/licat233/goctl-swagger@latest
 ```
 
 ### 2. 配置环境
@@ -22,24 +24,24 @@ GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/goctl-swagger
      email: "type email here"
      version: "type version here"
     )
-    
-    
+
+
     type (
      RegisterReq {
       Username string `json:"username"`
       Password string `json:"password"`
       Mobile string `json:"mobile"`
      }
-     
+
      LoginReq {
       Username string `json:"username"`
       Password string `json:"password"`
      }
-     
+
      UserInfoReq {
       Id string `path:"id"`
      }
-     
+
      UserInfoReply {
       Name string `json:"name"`
       Age int `json:"age"`
@@ -47,31 +49,31 @@ GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/goctl-swagger
       Description string `json:"description"`
       Tag []string `json:"tag"`
      }
-     
+
      UserSearchReq {
       KeyWord string `form:"keyWord"`
      }
     )
-    
+
     service user-api {
      @doc(
       summary: "注册"
      )
      @handler register
      post /api/user/register (RegisterReq)
-     
+
      @doc(
       summary: "登录"
      )
      @handler login
      post /api/user/login (LoginReq)
-     
+
      @doc(
       summary: "获取用户信息"
      )
      @handler getUserInfo
      get /api/user/:id (UserInfoReq) returns (UserInfoReply)
-     
+
      @doc(
       summary: "用户搜索"
      )
